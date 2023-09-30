@@ -1,0 +1,886 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO]{Institute of Technology of Cambodia}
+\fancyhead[RO]{Regression Analysis}
+\fancyfoot[CO]{}
+\fancyfoot[LO]{Dr. Phauk Sokkhey and Mr. Nhim Malai}
+\fancyfoot[RO]{\thepage}
+\usepackage{float}
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\begin{center}
+\textbf{I3-TD2} \\
+\textbf{Simple Linear Regression}
+\end{center}
+
+\hypertarget{problem-1}{%
+\section{Problem 1}\label{problem-1}}
+
+\textbf{Height and weight data} (Data file: \texttt{Htwt}) The table
+below and the the data file give \texttt{ht} = height in centimeters and
+\texttt{wt} = weight in kilograms for a sample of \(n=10\) 18-year-old
+girls. The interest is in predicting weight from height.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(alr4)}
+\FunctionTok{data}\NormalTok{(Htwt)}
+
+\NormalTok{Htwt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       ht   wt
+## 1  169.6 71.2
+## 2  166.8 58.2
+## 3  157.1 56.0
+## 4  181.1 64.5
+## 5  158.4 53.0
+## 6  165.6 52.4
+## 7  166.7 56.8
+## 8  156.5 49.2
+## 9  168.1 55.6
+## 10 165.3 77.8
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Draw a scatterplot of \texttt{wt} on the vertical axis versus
+  \texttt{ht} on the horizontal axis. On the basis of this plot, does a
+  simple linear model make sense for these data? Why or why not?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Htwt}\SpecialCharTok{$}\NormalTok{wt}\SpecialCharTok{\textasciitilde{}}\NormalTok{Htwt}\SpecialCharTok{$}\NormalTok{ht)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compute estimates of the slope and the intercept for the regression of
+  \(Y\) on \(X\). Draw the fitted line on your scatterplot.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_Htwt}\OtherTok{\textless{}{-}}\FunctionTok{lm}\NormalTok{(wt}\SpecialCharTok{\textasciitilde{}}\NormalTok{ht, }\AttributeTok{data=}\NormalTok{Htwt)}
+\NormalTok{lm\_Htwt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = wt ~ ht, data = Htwt)
+## 
+## Coefficients:
+## (Intercept)           ht  
+##    -36.8759       0.5821
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Htwt}\SpecialCharTok{$}\NormalTok{wt}\SpecialCharTok{\textasciitilde{}}\NormalTok{Htwt}\SpecialCharTok{$}\NormalTok{ht)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(Htwt}\SpecialCharTok{$}\NormalTok{wt}\SpecialCharTok{\textasciitilde{}}\NormalTok{Htwt}\SpecialCharTok{$}\NormalTok{ht))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Interpret the parameter estimates \(\hat{\beta_0}\) and
+  \(\hat{\beta_0}\). Obtain the \(t\)-tests for the hypotheses that
+  \(\beta_0=0\) and \(\beta_1=0\) and \(p\)-values using two-sided
+  tests. What is your conclusion based on the \(p\)-values.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(lm\_Htwt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = wt ~ ht, data = Htwt)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.1166 -4.7744 -2.8412  0.5696 18.4581 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -36.8759    64.4728  -0.572    0.583
+## ht            0.5821     0.3892   1.496    0.173
+## 
+## Residual standard error: 8.456 on 8 degrees of freedom
+## Multiple R-squared:  0.2185, Adjusted R-squared:  0.1208 
+## F-statistic: 2.237 on 1 and 8 DF,  p-value: 0.1731
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Obtain \(R^2\) and adjusted \(R^2\). What can you say about the them?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(lm\_Htwt)}\SpecialCharTok{$}\NormalTok{r.squared}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2185191
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(lm\_Htwt)}\SpecialCharTok{$}\NormalTok{adj.r.squared}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.120834
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Check all the model assumptions for this simple linear regression.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Linearity and independent of error}
+\NormalTok{e}\OtherTok{\textless{}{-}}\NormalTok{lm\_Htwt}\SpecialCharTok{$}\NormalTok{residuals}
+\NormalTok{y\_hat }\OtherTok{\textless{}{-}}\NormalTok{ lm\_Htwt}\SpecialCharTok{$}\NormalTok{fitted.values}
+
+\FunctionTok{plot}\NormalTok{(y\_hat, e)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{, }\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#H\_0: Independence of Error}
+\CommentTok{\#H\_A: The correlation exists}
+\FunctionTok{durbinWatsonTest}\NormalTok{(lm\_Htwt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  lag Autocorrelation D-W Statistic p-value
+##    1     -0.05772706      1.366839   0.406
+##  Alternative hypothesis: rho != 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Normality}
+\FunctionTok{hist}\NormalTok{(lm\_Htwt}\SpecialCharTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(lm\_Htwt}\SpecialCharTok{$}\NormalTok{residuals)}
+\FunctionTok{qqline}\NormalTok{(lm\_Htwt}\SpecialCharTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#H\_0: The data is normal}
+\CommentTok{\#H\_A: The data is not normal }
+\FunctionTok{shapiro.test}\NormalTok{(lm\_Htwt}\SpecialCharTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  lm_Htwt$residuals
+## W = 0.78496, p-value = 0.009514
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Homoschedasticity }
+\FunctionTok{plot}\NormalTok{(lm\_Htwt}\SpecialCharTok{$}\NormalTok{fitted.values, e)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(lm\_Htwt}\SpecialCharTok{$}\NormalTok{fitted.values, e}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#H\_0: Homoscedasticity holds}
+\CommentTok{\#H\_A: The variance is not constant}
+\FunctionTok{library}\NormalTok{(car)}
+\FunctionTok{ncvTest}\NormalTok{(lm\_Htwt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Non-constant Variance Score Test 
+## Variance formula: ~ fitted.values 
+## Chisquare = 0.03970496, Df = 1, p = 0.84206
+\end{verbatim}
+
+\hypertarget{problem-2}{%
+\section{Problem 2}\label{problem-2}}
+
+(Data file: \texttt{UBSprices}) The international bank UBS regularly
+produces a report (UBS, 2009) on prices and earnings in major cities
+throughout the world. Three of the measures they include are prices of
+basic commodities, namely 1kg of rice, a 1kg loaf of bread, and the
+price of a Big Mac hamburger at McDonalds. An interesting feature of the
+prices they report is that prices are measured in the minutes of labor
+required for a ``typical'' worker in that location to earn enough money
+to purchase the commodity. Using minutes of labor corrects at least in
+part for currency fluctuations, prevailing wage rates, and local prices.
+The data file includes measurements for rice, bread, and Big Mac prices
+from the 2003 and the 2009 reports. The year 2003 was before the major
+recession hit much of the world around 2006, and the year 2009 may
+reflect changes in prices due to the recession. The figure below is the
+plot of y = \texttt{rice2009} versus x = \texttt{rice2003}, the price of
+rice in 2009 and 2003, respectively, with the cities corresponding to a
+few of the points marked.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(alr4)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"UBSprices"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{rice2003, }\AttributeTok{y=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{rice2009,}
+     \AttributeTok{xlab=}\StringTok{"2003 Rice price"}\NormalTok{, }
+     \AttributeTok{ylab=}\StringTok{"2009 Rice price"}\NormalTok{)}
+\CommentTok{\#identify(x=UBSprices$rice2003, y=UBSprices$rice2009, }
+\CommentTok{\#         labels=row.names(UBSprices), n=5)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(rice2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{rice2003, }\AttributeTok{data=}\NormalTok{UBSprices), }\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a=}\DecValTok{0}\NormalTok{, }\AttributeTok{b=}\DecValTok{1}\NormalTok{, }\AttributeTok{lty=}\DecValTok{1}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"ols"}\NormalTok{, }\StringTok{"y=x"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{2}\SpecialCharTok{:}\DecValTok{1}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{rice2003, }\AttributeTok{y=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{rice2009,}
+     \AttributeTok{xlab=}\StringTok{"2003 Rice price"}\NormalTok{, }
+     \AttributeTok{ylab=}\StringTok{"2009 Rice price"}\NormalTok{)}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{rice2003, }\AttributeTok{y=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{rice2009,}
+     \AttributeTok{labels=}\FunctionTok{row.names}\NormalTok{(UBSprices), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{, }\AttributeTok{font=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(rice2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{rice2003, }\AttributeTok{data=}\NormalTok{UBSprices), }\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a=}\DecValTok{0}\NormalTok{, }\AttributeTok{b=}\DecValTok{1}\NormalTok{, }\AttributeTok{lty=}\DecValTok{1}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"ols"}\NormalTok{, }\StringTok{"y=x"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{2}\SpecialCharTok{:}\DecValTok{1}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-16-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  The line with equation \(y = x\) is shown on this plot as the solid
+  line. What is the key difference between points above this line and
+  points below the line?
+\item
+  Which city had the largest increase in rice price? Which had the
+  largest decrease in rice price?
+\item
+  The ols line \(\hat{y}=\hat{\beta}_0+\hat{\beta}_1x\) is shown on the
+  figure as a dashed line, and evidently \(\hat{\beta}_1 <1\). Does this
+  suggest that prices are lower in 2009 than in 2003? Explain your
+  answer.
+\item
+  Give two reasons why fitting simple linear regression to the figure in
+  this problem is not likely to be appropriate.
+\end{enumerate}
+
+\hypertarget{problem-3}{%
+\section{Problem 3}\label{problem-3}}
+
+(Data file: \texttt{UBSprices}) This is a continuation of Problem 2. An
+alternative representation of the data used in the last problem is to
+use log scales, as in the following figure:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x=}\FunctionTok{log}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{rice2003), }\AttributeTok{y=}\FunctionTok{log}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{rice2009),}
+     \AttributeTok{xlab=}\StringTok{"log(2003 Rice price)"}\NormalTok{, }
+     \AttributeTok{ylab=}\StringTok{"log(2009 Rice price)"}\NormalTok{)}
+
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(rice2009)}\SpecialCharTok{\textasciitilde{}}\FunctionTok{log}\NormalTok{(rice2003), }\AttributeTok{data=}\NormalTok{UBSprices), }\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a=}\DecValTok{0}\NormalTok{, }\AttributeTok{b=}\DecValTok{1}\NormalTok{, }\AttributeTok{lty=}\DecValTok{1}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"ols"}\NormalTok{, }\StringTok{"y=x"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{2}\SpecialCharTok{:}\DecValTok{1}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-17-1} \end{center}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  Explain why this graph and the graph in Problem 2 suggests that using
+  log-scale is preferable if fitting simple linear regression is
+  desired.
+\item
+  Suppose we start with a proposed model
+\end{enumerate}
+
+\[
+E(y|x) = \gamma_0 x^{\beta_1}
+\]
+
+This is a common model in many areas of study. Examples include
+allometry (Gould, 1966), where x could represent the size of one body
+characteristic such as total weight and y represents some other body
+characteristic, such as brain weight, psychophysics (Stevens, 1966), in
+which x is a physical stimulus and y is a psychological response to it,
+or in economics, where x could represent inputs and y outputs, where
+this relationship is often called a Cobb-Douglas production function
+(Greene, 2003).
+
+If we take the logs of both sides of the last equation, we get
+
+\[
+\log(E(y|x)) = \log(\gamma_0) + \beta_1 \log(x)
+\]
+
+If we approximate \(\log(E(y|x)) \approx E(\log(y)|x)\), and write
+\(\beta_0 = \log(\gamma_0)\), to the extent that the logarithm of the
+expectation equals the expectation of the logarithm, we have
+
+\[
+E(\log(y)|x) = \beta_0 + \beta_1 \log(x)
+\]
+
+Give an interpretation of \(\beta_0\) and \(\beta_1\) in this setting,
+assuming \(\beta_1>0\).
+
+\hypertarget{problem-4}{%
+\section{Problem 4}\label{problem-4}}
+
+(Data file: \texttt{UBSprices}) This problem continues with the data
+file \texttt{UBSprices} described in Problem 2.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Draw the plot of \texttt{y=bigmac2009} versus \texttt{x=bigmac2003},
+  the price of a Big Mac hamburger in 2009 and 2003. On this plot draw
+  (1) the ols fitted line; (2) the line \(y = x\). Identify the most
+  unusual cases and describe why they are unusual.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003))}
+\FunctionTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{, }\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\AttributeTok{inset=}\FloatTok{0.02}\NormalTok{, }\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"OLS"}\NormalTok{, }\StringTok{"y=x"}\NormalTok{),}\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003))}
+\FunctionTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{, }\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\AttributeTok{inset=}\FloatTok{0.02}\NormalTok{, }\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"OLS"}\NormalTok{, }\StringTok{"y=x"}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003)}
+\CommentTok{\#identify(x=UBSprices$bigmac2003, y=UBSprices$bigmac2009, }
+\CommentTok{\#         labels=row.names(UBSprices), n=3)}
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003, }\AttributeTok{y=}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009,}
+     \AttributeTok{labels=}\FunctionTok{row.names}\NormalTok{(UBSprices), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{, }\AttributeTok{font=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009}\SpecialCharTok{\textasciitilde{}}\NormalTok{UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003))}
+\FunctionTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{, }\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\AttributeTok{inset=}\FloatTok{0.02}\NormalTok{, }\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"OLS"}\NormalTok{, }\StringTok{"y=x"}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-20-2.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Give two reasons why fitting simple linear regression to the figure in
+  this problem is not likely to be appropriate.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Plot log(\texttt{bigmac2009}) versus log(\texttt{bigmac2003}) and
+  explain why this graph is more sensibly summarized with a linear
+  regression.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{log}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009)}\SpecialCharTok{\textasciitilde{}}\FunctionTok{log}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003))}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2009)}\SpecialCharTok{\textasciitilde{}}\FunctionTok{log}\NormalTok{(UBSprices}\SpecialCharTok{$}\NormalTok{bigmac2003)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\hypertarget{problem-5}{%
+\section{Problem 5}\label{problem-5}}
+
+\textbf{Ft. Collins temperature data} (Data file:
+\texttt{ftcollinstemp}) The data file gives the mean temperature in the
+\texttt{fall} of each year, defined as September 1 to November 30, and
+the mean temperature in the following \texttt{winter}, defined as
+December 1 to the end of February in the following calendar year, in
+degrees Fahrenheit, for Ft. Collins, CO (Colorado Climate Center, 2012).
+These data cover the time period from 1900 to 2010. The question of
+interest is: Does the average \texttt{fall} temperature predict the
+average \texttt{winter} temperature?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(alr4)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"ftcollinstemp"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(ftcollinstemp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   year fall winter
+## 1 1900 50.2   28.5
+## 2 1901 48.1   28.2
+## 3 1902 48.1   24.7
+## 4 1903 49.9   31.4
+## 5 1904 47.8   26.7
+## 6 1905 46.9   29.8
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Draw a scatterplot of the response versus the predictor, and describe
+  any pattern you might see in the plot.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(ftcollinstemp}\SpecialCharTok{$}\NormalTok{winter}\SpecialCharTok{\textasciitilde{}}\NormalTok{ftcollinstemp}\SpecialCharTok{$}\NormalTok{fall)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(ftcollinstemp}\SpecialCharTok{$}\NormalTok{winter}\SpecialCharTok{\textasciitilde{}}\NormalTok{ftcollinstemp}\SpecialCharTok{$}\NormalTok{fall))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:car':
+## 
+##     recode
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{c.temp}\OtherTok{\textless{}{-}}\NormalTok{ftcollinstemp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(fall) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise\_at}\NormalTok{(}\FunctionTok{vars}\NormalTok{(winter), }\FunctionTok{list}\NormalTok{(}\AttributeTok{mean =}\NormalTok{ mean, }\AttributeTok{sd=}\NormalTok{sd))}
+
+\FunctionTok{ggplot}\NormalTok{(c.temp, }\FunctionTok{aes}\NormalTok{(fall,mean)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin=}\NormalTok{mean}\SpecialCharTok{{-}}\NormalTok{sd, }\AttributeTok{ymax=}\NormalTok{mean}\SpecialCharTok{+}\NormalTok{sd), }\AttributeTok{width=}\FloatTok{0.2}\NormalTok{, }
+                \AttributeTok{position=}\FunctionTok{position\_dodge}\NormalTok{(}\FloatTok{0.05}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{"fall"}\NormalTok{, }\AttributeTok{y=}\StringTok{"average winter"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: `position_dodge()` requires non-overlapping x intervals
+\end{verbatim}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-25-2.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Use statistical software to fit the regression of the response on the
+  predictor. Add the fitted line to your graph. Test the slope to be 0
+  against a two-sided alternative, and summarize your results.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_temp }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(winter}\SpecialCharTok{\textasciitilde{}}\NormalTok{fall, }\AttributeTok{data=}\NormalTok{ftcollinstemp)}
+\FunctionTok{summary}\NormalTok{(lm\_temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = winter ~ fall, data = ftcollinstemp)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.8186 -1.7837 -0.0873  2.1300  7.5896 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)  13.7843     7.5549   1.825   0.0708 .
+## fall          0.3132     0.1528   2.049   0.0428 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.179 on 109 degrees of freedom
+## Multiple R-squared:  0.0371, Adjusted R-squared:  0.02826 
+## F-statistic:   4.2 on 1 and 109 DF,  p-value: 0.04284
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Compute or obtain from your computer output the value of the
+  variability in \texttt{winter} explained by \texttt{fall} and explain
+  what this means.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(lm\_temp)}\SpecialCharTok{$}\NormalTok{r.squared}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03709854
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Divide the data into 2 time periods, an early period from 1900 to
+  1989, and a late period from 1990 to 2010. You can do this using the
+  variable \texttt{year} in the data file. Are the results different in
+  the two time periods?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{temp1989 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(ftcollinstemp, year}\SpecialCharTok{\textless{}=}\DecValTok{1989}\NormalTok{)}
+\NormalTok{temp2010 }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(ftcollinstemp, year}\SpecialCharTok{\textgreater{}=}\DecValTok{1990}\NormalTok{)}
+\FunctionTok{nrow}\NormalTok{(temp1989)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 90
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(temp2010)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 21
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(ftcollinstemp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 111
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(winter}\SpecialCharTok{\textasciitilde{}}\NormalTok{fall, }\AttributeTok{data=}\NormalTok{temp1989)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_1989}\OtherTok{\textless{}{-}}\FunctionTok{lm}\NormalTok{(winter}\SpecialCharTok{\textasciitilde{}}\NormalTok{fall, }\AttributeTok{data=}\NormalTok{temp1989)}
+\FunctionTok{summary}\NormalTok{(lm\_1989)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = winter ~ fall, data = temp1989)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.8976 -1.6349  0.0118  2.0079  7.3387 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)  22.7079     8.2600   2.749  0.00725 **
+## fall          0.1209     0.1681   0.719  0.47397   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.057 on 88 degrees of freedom
+## Multiple R-squared:  0.005842,   Adjusted R-squared:  -0.005455 
+## F-statistic: 0.5171 on 1 and 88 DF,  p-value: 0.474
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(winter}\SpecialCharTok{\textasciitilde{}}\NormalTok{fall, }\AttributeTok{data=}\NormalTok{temp2010)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TD2RAA_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_2010}\OtherTok{\textless{}{-}}\FunctionTok{lm}\NormalTok{(winter}\SpecialCharTok{\textasciitilde{}}\NormalTok{fall, }\AttributeTok{data=}\NormalTok{temp2010)}
+\FunctionTok{summary}\NormalTok{(lm\_2010)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = winter ~ fall, data = temp2010)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.4174 -1.7097  0.3768  1.8988  4.9602 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  24.8260    17.7973   1.395    0.179
+## fall          0.1390     0.3509   0.396    0.696
+## 
+## Residual standard error: 2.699 on 19 degrees of freedom
+## Multiple R-squared:  0.00819,    Adjusted R-squared:  -0.04401 
+## F-statistic: 0.1569 on 1 and 19 DF,  p-value: 0.6965
+\end{verbatim}
+
+\end{document}

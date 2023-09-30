@@ -1,0 +1,254 @@
+
+```{r}
+# install.packages("HistData")
+library(HistData)
+data(Galton)
+Galton = data.frame(Galton)
+```
+```{r}
+# install.packages("dplyr")
+library(dplyr)
+glimpse(Galton)
+```
+```{r}
+#More info of Galton Data Set
+?Galton
+```
+## Task 1  
+### a
+```{r}
+cont.parent.child <- table(Galton$child, Galton$parent)
+library(knitr)
+kable(cont.parent.child)
+```
+### b
+```{r}
+plot(Galton$parent, Galton$child, 
+     xlab="average of height of parents in inch",
+     ylab="height of children")
+abline(lm(Galton$child ~ Galton$parent))
+```
+
+#Alternative way of plot by using ggplot2 packages
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+ggplot(Galton, aes(x=parent, y=child)) +
+  geom_point() + 
+  xlab("average of height of parents in inch") + 
+  ylab("height of children") +
+  ggtitle("Scatter Plot of Average Height of Parents vs. Height of Children")+ 
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_bw()
+```
+
+# Task 2
+```{r}
+# install.packages("gamlss.data")
+library(gamlss.data)
+#loading data into R environment 
+data(rent99)
+rent99 <- data.frame(rent99)
+#to view data set
+View(rent99)
+#to get the overview of the dataset
+glimpse(rent99)
+```
+
+#more information of the dataset 
+```{r}
+help("rent99")  # or ?rent99
+par(mfrow=c(2,2))
+```
+
+
+### a Histogram
+# Task 2 (continue)
+# b. Scatter plot ##############################################################
+```{r}
+par(mfrow=c(2,2))
+plot(rent99$area, rent99$rent, xlab="area in sqm", ylab="net rent in Euro", 
+     main="Scatterplot: net rent vs. area")
+
+plot(rent99$area, rent99$rentsqm, 
+     xlab="area in sqm", ylab="net rent per sqm in Euro", 
+     main="Scatterplot: net rent  per sqm vs. area")
+
+plot(rent99$yearc, rent99$rent, xlab="year of construction", 
+     ylab="net rent in Euro", 
+     main="Scatterplot: net rent vs. year of construction")
+
+plot(rent99$yearc, rent99$rentsqm, xlab="year of construction", 
+     ylab="net rent per sqm in Euro", 
+     main="Scatterplot: net rent per sqm vs. year of const.")
+par(mfrow=c(1,1))
+```
+
+# c. Cluster scatter plot ######################################################
+#install.packages("dplyr")
+```{r}
+library(dplyr)
+#install.packages('ggplot2')
+library(ggplot2)
+crent99<-rent99 %>%
+  group_by(area) %>% 
+  summarise_at(vars(rent), list(mean = mean, sd=sd))
+
+A<-ggplot(crent99, aes(area,mean)) + 
+  geom_point() +
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=0.2, 
+                position=position_dodge(0.05)) +
+  labs(x="area in sqm", y="average net rent", 
+       title = "Average net rent vs. area") + 
+  theme_bw()
+
+crent99<-rent99 %>%
+  group_by(area) %>% 
+  summarise_at(vars(rentsqm), list(meansqm = mean, sd=sd))
+
+B<-ggplot(crent99, aes(area,meansqm)) + 
+  geom_point() +
+  geom_errorbar(aes(ymin=meansqm-sd, ymax=meansqm+sd), width=0.2, 
+                position=position_dodge(0.05)) +
+  labs(x="area in sqm", y="average net rent per sqm", 
+       title = "Average net rent per sqm vs. area") + 
+  theme_bw()
+
+crent99<-rent99 %>%
+  group_by(yearc) %>% 
+  summarise_at(vars(rent), list(mean = mean, sd=sd))
+
+C<-ggplot(crent99, aes(yearc,mean)) + 
+  geom_point() +
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=0.2, 
+                position=position_dodge(0.05)) +
+  labs(x="year of construction", y="average net rent", 
+       title = "Average net rent vs. year of construction") + 
+  theme_bw()
+
+crent99<-rent99 %>%
+  group_by(yearc) %>% 
+  summarise_at(vars(rentsqm), list(mean = mean, sd=sd))
+
+D<-ggplot(crent99, aes(yearc,mean)) + 
+  geom_point() +
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=0.2, 
+                position=position_dodge(0.05)) +
+  labs(x="year of construction", y="average net rent per sqm", 
+       title = "Average net rent per sqm vs. year of const.") + 
+  theme_bw()
+# install.packages("ggpubr")
+library(ggpubr)
+ggarrange(A, B, C, D, widths = c(2, 2, 2, 2))
+```
+
+# d. Box plot and smooth density estimators ####################################
+```{r}
+par(mfrow=c(1,2))
+boxplot(rent99$rentsqm ~ rent99$location, xlab="location", 
+        ylab="net rent per sqm", main="")
+
+
+library(dplyr)
+
+average<-rent99 %>%
+  select(rentsqm, location) %>%
+  filter(location == 1)
+good<-rent99 %>%
+  select(rentsqm, location) %>%
+  filter(location == 2)
+
+top<-rent99 %>%
+  select(rentsqm, location) %>%
+  filter(location == 3)
+
+plot(density(average$rentsqm), col="black", lty=1, xlab="net rent per sqm", 
+     ylab="estimated density", main="")
+lines(density(good$rentsqm), col="blue", lty=2)
+lines(density(top$rentsqm), col="red", lty=3)
+legend("topright", legend=c("average", "good", "top"), 
+       col=c("black", "blue", "red"), lty=1:2:3, cex=0.6)
+
+par(mfrow=c(1,1))
+```
+# Task 3 
+```{r}
+library(alr4)
+data(fuel2001)
+fuel2001<-data.frame(fuel2001)
+```
+# a. Create 3 more variable ####################################################
+```{r}
+library(dplyr)
+fuel2001 <- mutate(fuel2001, 
+                   Fuel = 1000*FuelC / Pop, 
+                   Dlic = 1000*Drivers / Pop, 
+                   log_Miles = log(Miles))
+colnames(fuel2001)
+head(fuel2001)
+```
+
+# b. Based on the goal to the task #############################################
+## Goal: to understand how fuel consumption varies over the 50 United States 
+## ans the district of Columbia
+```{r}
+glimpse(fuel2001)
+                   
+## Response variable:
+##################### FuelC: gasoline sold for road use, thousand of gallons
+################## Or Fuel: 1000*FuelC/Pop
+## Study the overview of each variable by using initial descriptive and graphical 
+## univariate analysis. 
+summary(fuel2001$FuelC)
+summary(fuel2001$Fuel)
+summary(fuel2001$Drivers)
+summary(fuel2001$Income)
+summary(fuel2001$Miles)
+summary(fuel2001$MPC)
+summary(fuel2001$Pop)
+summary(fuel2001$Tax)
+summary(fuel2001$Dlic)
+summary(fuel2001$log_Miles)
+```
+## Alternative
+```{r}
+library(gtsummary)
+tbl_summary(fuel2001, type=all_continuous() ~ "continuous2",
+            statistic=all_continuous() ~ c("{min}, {max}", 
+                                           "{median} ({p25}, {p75})",
+                                           "{sd}", "{var}"),missing = "no")
+par(mfrow=c(1,2))
+hist(fuel2001$FuelC, breaks=20, xlab="FuelC", 
+     main="Histogram of FuelC")
+hist(fuel2001$Fuel, breaks=20, xlab="FuelC", 
+     main="Histogram of Fuel")
+par(mfrow=c(1,1))
+```
+## Histogram
+par(mfrow=c(4,3))
+variables = names(fuel2001)
+for(variable in variables){
+  hist(fuel2001[,variable], breaks=20,
+       xlab=paste0(variable),
+       main=paste0("Histogram of ", variable))
+}
+par(mfrow=c(1,1))
+
+#dev.off()
+#library(Hmisc)
+#hist.data.frame(fuel2001)
+
+#library(ggplot2)
+#library(reshape2)
+#fuel2001.long<-melt(fuel2001)
+#ggplot(fuel2001.long, aes(x = value)) + 
+#  geom_histogram() +
+#  facet_wrap(~variable)
+
+# install.packages("PerformanceAnalytics")
+library(PerformanceAnalytics)
+chart.Correlation(fuel2001, histogram = TRUE, method = "pearson")
+
+
+
+
